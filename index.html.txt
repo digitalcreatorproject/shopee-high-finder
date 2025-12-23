@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee Finder High Commission - Temukan Produk Komisi Tinggi dengan Mudah</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            /* ✅ PERUBAHAN 1: Background lebih terang */
+            background: linear-gradient(135deg, #1a365d 0%, #2563eb 50%, #1e40af 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+            animation: float 20s infinite;
+        }
+
+        .bg-animation .circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .bg-animation .circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: 10%;
+            left: -50px;
+            animation-delay: -5s;
+        }
+
+        .bg-animation .circle:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            right: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-50px) rotate(180deg); opacity: 0.2; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(30, 64, 175, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #f97316;
+            font-size: 1.8rem;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(249, 115, 22, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .hero-text h1 .highlight {
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge i {
+            color: #3b82f6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image {
+            background: linear-gradient(135deg, #1e3a5f, #0d2341);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .software-preview {
+            background: #0f172a;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .preview-header {
+            background: linear-gradient(135deg, #1e3a5f, #2d4a6f);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .preview-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .preview-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .preview-dots span:nth-child(1) { background: #ef4444; }
+        .preview-dots span:nth-child(2) { background: #fbbf24; }
+        .preview-dots span:nth-child(3) { background: #22c55e; }
+
+        .preview-title {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-left: 20px;
+        }
+
+        .preview-content {
+            padding: 25px;
+        }
+
+        .preview-search {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .preview-search i {
+            color: #3b82f6;
+        }
+
+        .preview-search span {
+            color: #64748b;
+        }
+
+        .preview-categories {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .preview-cat {
+            background: rgba(59, 130, 246, 0.2);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #60a5fa;
+        }
+
+        .preview-results {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .preview-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .preview-item-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .preview-item-info span {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .preview-commission {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.4);
+            animation: bounce 2s infinite;
+        }
+
+        .floating-badge.top {
+            top: -20px;
+            right: -20px;
+        }
+
+        .floating-badge.bottom {
+            bottom: 40px;
+            left: -30px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.4);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 100px 5%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(249, 115, 22, 0.2);
+            color: #fb923c;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(185, 28, 28, 0.1));
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(239, 68, 68, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .problem-icon i {
+            font-size: 1.5rem;
+            color: #f87171;
+        }
+
+        .problem-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .problem-card p {
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 100px 5%;
+        }
+
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .solution-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .solution-text h2 .highlight {
+            background: linear-gradient(135deg, #22c55e, #4ade80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .solution-text > p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .solution-features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .solution-feature {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .feature-check {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-check i {
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .solution-feature h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .solution-feature p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .solution-visual {
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .stat-card.highlight-card {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(234, 88, 12, 0.1));
+            border-color: rgba(249, 115, 22, 0.2);
+        }
+
+        .stat-card.highlight-card:hover {
+            border-color: rgba(249, 115, 22, 0.4);
+        }
+
+        /* ✅ PERUBAHAN 3: Stat number dikecilkan */
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .stat-card.highlight-card .stat-number {
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ✅ PERUBAHAN 3: Stat label dikecilkan */
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 100px 5%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.1));
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .category-icon i {
+            font-size: 1.3rem;
+            color: #60a5fa;
+        }
+
+        .category-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 100px 5%;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 15%;
+            right: 15%;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #f97316);
+            z-index: 0;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #1e3a5f, #0d2341);
+            border: 3px solid #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #3b82f6;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .step p {
+            color: #94a3b8;
+            line-height: 1.7;
+            padding: 0 20px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 5%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card {
+            max-width: 550px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1e3a5f, #0d2341);
+            border: 2px solid #f97316;
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #f97316, #fbbf24);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 30px;
+            right: -35px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            padding: 8px 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+
+        .pricing-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-header p {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .price-container {
+            margin-bottom: 30px;
+        }
+
+        .price-old {
+            font-size: 1.3rem;
+            color: #ef4444;
+            text-decoration: line-through;
+            margin-bottom: 10px;
+        }
+
+        /* ✅ PERUBAHAN 2: Harga baru dikecilkan */
+        .price-new {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-new span {
+            font-size: 1.2rem;
+        }
+
+        .price-period {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        /* Bonus Section */
+        .bonus-section {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(22, 163, 74, 0.1));
+            border: 2px dashed rgba(34, 197, 94, 0.5);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .bonus-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .bonus-header i {
+            font-size: 1.5rem;
+            color: #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .bonus-header h4 {
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, #22c55e, #4ade80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bonus-tag {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bonus-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bonus-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .bonus-item:hover {
+            background: rgba(34, 197, 94, 0.15);
+            transform: translateX(5px);
+        }
+
+        .bonus-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(22, 163, 74, 0.2));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .bonus-icon i {
+            color: #4ade80;
+            font-size: 1rem;
+        }
+
+        .bonus-item-text {
+            flex: 1;
+        }
+
+        .bonus-item-text h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .bonus-item-text span {
+            font-size: 0.8rem;
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .bonus-value {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .bonus-total {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(34, 197, 94, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bonus-total span {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .bonus-total strong {
+            font-size: 1.1rem;
+            color: #22c55e;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-feature:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-feature i {
+            color: #22c55e;
+            font-size: 1.1rem;
+        }
+
+        .btn-buy {
+            width: 100%;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-buy:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(249, 115, 22, 0.5);
+        }
+
+        .guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .guarantee i {
+            color: #22c55e;
+            font-size: 1.3rem;
+        }
+
+        /* Honesty Section */
+        .honesty {
+            padding: 100px 5%;
+        }
+
+        .honesty-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            padding: 50px;
+        }
+
+        .honesty-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .honesty-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .honesty-icon i {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .honesty-header h3 {
+            font-size: 1.8rem;
+        }
+
+        .honesty-text {
+            color: #94a3b8;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .honesty-text p {
+            margin-bottom: 20px;
+        }
+
+        .honesty-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .honesty-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .honesty-point i {
+            color: #22c55e;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 5%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(13, 35, 65, 0.5));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .faq-question {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: #3b82f6;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 24px 24px;
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .cta p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .footer-copyright {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content,
+            .solution-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-badges {
+                justify-content: center;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+
+            .solution-features {
+                text-align: left;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .pricing-card {
+                padding: 40px 30px;
+            }
+
+            /* ✅ PERUBAHAN 2: Harga dikecilkan untuk tablet */
+            .price-new {
+                font-size: 2.2rem;
+            }
+
+            .price-new span {
+                font-size: 1rem;
+            }
+
+            /* ✅ PERUBAHAN 3: Stats dikecilkan untuk tablet */
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .navbar {
+                padding: 15px 4%;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .bonus-item {
+                flex-wrap: wrap;
+            }
+
+            .bonus-value {
+                margin-left: 52px;
+                margin-top: 5px;
+            }
+
+            /* ✅ PERUBAHAN 2: Harga dikecilkan untuk HP */
+            .price-new {
+                font-size: 1.8rem;
+            }
+
+            .price-new span {
+                font-size: 0.9rem;
+            }
+
+            /* ✅ PERUBAHAN 3: Stats dikecilkan untuk HP */
+            .stat-number {
+                font-size: 1.3rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-search-dollar"></i>
+            <span>Shopee High Commission Finder</span>
+        </a>
+        <a href="#pricing" class="nav-cta">Dapatkan Sekarang</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text fade-in">
+                <h1>Temukan Produk <span class="highlight">Komisi Tertinggi</span> di Shopee dalam Hitungan Detik</h1>
+                <p class="subtitle">Software yang membantu affiliate marketer menemukan produk dengan komisi tinggi dari 15 kategori berbeda. Stop buang waktu scroll manual, mulai cari cerdas!</p>
+                
+                <div class="hero-badges">
+                    <div class="badge">
+                        <i class="fas fa-infinity"></i>
+                        Lifetime Access
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-folder-open"></i>
+                        15 Kategori
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-bolt"></i>
+                        Hasil Instan
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <a href="#pricing" class="btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Dapatkan Sekarang
+                    </a>
+                    <a href="#how-it-works" class="btn-secondary">
+                        <i class="fas fa-play-circle"></i>
+                        Lihat Cara Kerja
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual fade-in">
+                <div class="hero-image">
+                    <div class="software-preview">
+                        <div class="preview-header">
+                            <div class="preview-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="preview-title">Shopee Finder High Commission</span>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-search">
+                                <i class="fas fa-search"></i>
+                                <span>Pilih kategori produk...</span>
+                            </div>
+                            <div class="preview-categories">
+                                <span class="preview-cat">Fashion</span>
+                                <span class="preview-cat">Elektronik</span>
+                                <span class="preview-cat">Kecantikan</span>
+                            </div>
+                            <div class="preview-results">
+                                <div class="preview-item">
+                                    <div class="preview-item-info">
+                                        <h4>Skincare Premium Set</h4>
+                                        <span>Terjual 2.5rb+ | ⭐ 4.9</span>
+                                    </div>
+                                    <span class="preview-commission">15%</span>
+                                </div>
+                                <div class="preview-item">
+                                    <div class="preview-item-info">
+                                        <h4>Gadget Wireless</h4>
+                                        <span>Terjual 1.8rb+ | ⭐ 4.8</span>
+                                    </div>
+                                    <span class="preview-commission">12%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-badge top">🔥 High Commission!</div>
+                <div class="floating-badge bottom">💰 Lifetime Access</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">😩 Masalah Affiliate</span>
+                <h2>Apakah Anda Mengalami Ini?</h2>
+                <p>Masalah klasik yang sering dihadapi affiliate marketer Shopee</p>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Buang Waktu Berjam-jam</h3>
+                    <p>Scroll manual mencari produk komisi tinggi, capek dan tidak efisien. Waktu berharga terbuang sia-sia.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>Komisi Kecil Terus</h3>
+                    <p>Sudah promosi capek-capek, tapi komisi yang didapat tidak sebanding dengan effort yang dikeluarkan.</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <h3>Tidak Tahu Produk Mana</h3>
+                    <p>Bingung memilih dari jutaan produk. Mana yang worth it untuk dipromosikan? Mana yang komisinya bagus?</p>
+                </div>
+
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Sulit Scale Up</h3>
+                    <p>Mau scale up tapi stuck karena tidak punya data produk yang bagus untuk dipromosikan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="section-container">
+            <div class="solution-content">
+                <div class="solution-text fade-in">
+                    <span class="section-tag">✅ Solusi</span>
+                    <h2>Shopee Finder <span class="highlight">High Commission</span></h2>
+                    <p>Software sederhana yang membantu Anda menemukan produk-produk dengan komisi tinggi di Shopee. Hemat waktu, fokus promosi, maksimalkan penghasilan affiliate-mu.</p>
+
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <div class="feature-check">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h4>Filter Berdasarkan Kategori</h4>
+                                <p>Pilih dari 15 kategori yang tersedia sesuai niche-mu</p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <div class="feature-check">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h4>Lihat Persentase Komisi</h4>
+                                <p>Langsung tahu berapa % komisi yang akan Anda dapatkan</p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <div class="feature-check">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h4>Hemat Waktu Riset</h4>
+                                <p>Tidak perlu scroll manual berjam-jam lagi</p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <div class="feature-check">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <h4>Akses Selamanya</h4>
+                                <p>Bayar sekali, gunakan selamanya tanpa biaya bulanan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-visual fade-in">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Kategori Tersedia</div>
+                        </div>
+                        <div class="stat-card highlight-card">
+                            <div class="stat-number">∞</div>
+                            <div class="stat-label">Lifetime Access</div>
+                        </div>
+                        <div class="stat-card highlight-card">
+                            <div class="stat-number">5-15%</div>
+                            <div class="stat-label">Range Komisi</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">⚡</div>
+                            <div class="stat-label">Hasil Instan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">📂 15 Kategori</span>
+                <h2>Kategori yang Tersedia</h2>
+                <p>Pilih kategori sesuai niche affiliate marketing Anda</p>
+            </div>
+
+            <div class="categories-grid fade-in">
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-tshirt"></i></div>
+                    <h4>Fashion Wanita</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-user-tie"></i></div>
+                    <h4>Fashion Pria</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-spa"></i></div>
+                    <h4>Kecantikan</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h4>Kesehatan</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h4>Elektronik</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-home"></i></div>
+                    <h4>Rumah Tangga</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-baby"></i></div>
+                    <h4>Ibu & Bayi</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-futbol"></i></div>
+                    <h4>Olahraga</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-gamepad"></i></div>
+                    <h4>Hobi & Games</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-utensils"></i></div>
+                    <h4>Makanan</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-car"></i></div>
+                    <h4>Otomotif</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-book"></i></div>
+                    <h4>Buku & ATK</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-camera"></i></div>
+                    <h4>Fotografi</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-paw"></i></div>
+                    <h4>Pet Care</h4>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon"><i class="fas fa-box-open"></i></div>
+                    <h4>Lainnya</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">🔧 Cara Kerja</span>
+                <h2>Sangat Mudah Digunakan</h2>
+                <p>3 langkah sederhana untuk menemukan produk komisi tinggi</p>
+            </div>
+
+            <div class="steps-container fade-in">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Pilih Kategori</h3>
+                    <p>Pilih salah satu dari 15 kategori yang sesuai dengan niche affiliate Anda</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Lihat Hasil</h3>
+                    <p>Software akan menampilkan daftar produk dengan komisi tinggi dari kategori tersebut</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Mulai Promosi</h3>
+                    <p>Ambil link affiliate dan mulai promosikan produk pilihan Anda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Honesty Section -->
+    <section class="honesty">
+        <div class="section-container">
+            <div class="honesty-content fade-in">
+                <div class="honesty-header">
+                    <div class="honesty-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Saya Ingin Jujur dengan Anda</h3>
+                </div>
+                <div class="honesty-text">
+                    <p>Ini adalah produk baru yang saya launching. Jadi belum ada testimoni dari pengguna lain. Saya tidak mau memasang testimoni palsu atau screenshot income yang bukan milik pengguna software ini.</p>
+                    <p>Yang bisa saya janjikan:</p>
+                    <div class="honesty-points">
+                        <div class="honesty-point">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Software berfungsi sesuai yang dijelaskan - membantu menemukan produk komisi tinggi</span>
+                        </div>
+                        <div class="honesty-point">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Anda mendapat akses lifetime, bukan langganan bulanan</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 30px;"><strong style="color: #f97316;">Catatan penting:</strong> Software ini adalah alat bantu riset. Hasil affiliate tetap tergantung pada kemampuan promosi dan konsistensi kamu. Tidak ada jaminan penghasilan tertentu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">💰 Harga</span>
+                <h2>Investasi Sekali, Pakai Selamanya</h2>
+                <p>Tidak ada biaya bulanan, tidak ada biaya tersembunyi</p>
+            </div>
+
+            <div class="pricing-card fade-in">
+                <div class="pricing-badge">LIFETIME</div>
+                <div class="pricing-header">
+                    <h3>Shopee Finder High Commission</h3>
+                    <p>Akses penuh ke semua fitur selamanya</p>
+                </div>
+
+                <div class="price-container">
+                    <div class="price-old">Rp 350.000</div>
+                    <div class="price-new"><span>Rp</span>99.000</div>
+                    <div class="price-period">Sekali bayar, akses selamanya</div>
+                </div>
+
+                <!-- BONUS SECTION -->
+                <div class="bonus-section">
+                    <span class="bonus-tag">🎁 BONUS SPESIAL</span>
+                    <div class="bonus-header">
+                        <i class="fas fa-gift"></i>
+                        <h4>Bonus Eksklusif untuk Kamu!</h4>
+                    </div>
+                    <div class="bonus-list">
+                        <div class="bonus-item">
+                            <div class="bonus-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="bonus-item-text">
+                                <h5>3000+ Template Design Instagram</h5>
+                                <span>Siap pakai untuk konten</span>
+                            </div>
+                            <span class="bonus-value">GRATIS</span>
+                        </div>
+                        <div class="bonus-item">
+                            <div class="bonus-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="bonus-item-text">
+                                <h5>Social Media Agency Tool Kit</h5>
+                                <span>Toolkit lengkap untuk agency</span>
+                            </div>
+                            <span class="bonus-value">GRATIS</span>
+                        </div>
+                        <div class="bonus-item">
+                            <div class="bonus-icon">
+                                <i class="fas fa-sticky-note"></i>
+                            </div>
+                            <div class="bonus-item-text">
+                                <h5>130 Sticker Pack</h5>
+                                <span>Percantik konten sosmed</span>
+                            </div>
+                            <span class="bonus-value">GRATIS</span>
+                        </div>
+                        <div class="bonus-item">
+                            <div class="bonus-icon">
+                                <i class="fas fa-mobile-screen-button"></i>
+                            </div>
+                            <div class="bonus-item-text">
+                                <h5>468 Instagram Story</h5>
+                                <span>Template story premium</span>
+                            </div>
+                            <span class="bonus-value">GRATIS</span>
+                        </div>
+                        <div class="bonus-item">
+                            <div class="bonus-icon">
+                                <i class="fab fa-tiktok"></i>
+                            </div>
+                            <div class="bonus-item-text">
+                                <h5>Kelas FYP Tiktok</h5>
+                                <span>Rahasia masuk FYP</span>
+                            </div>
+                            <span class="bonus-value">GRATIS</span>
+                        </div>
+                    </div>
+                    <div class="bonus-total">
+                        <span>Total Nilai Bonus:</span>
+                        <strong>Rp 1.500.000+</strong>
+                    </div>
+                </div>
+                <!-- END BONUS SECTION -->
+
+                <div class="pricing-features">
+                    <div class="pricing-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Akses ke 15 kategori produk</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Filter produk komisi tinggi</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Lifetime access (bayar sekali)</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>5 Bonus eksklusif senilai 1.5jt+</span>
+                    </div>
+                    <div class="pricing-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Panduan penggunaan</span>
+                    </div>
+                </div>
+
+                <button class="btn-buy" onclick="window.open('https://lynk.id/zentromedia/zywz0yz72w8d/checkout', '_blank')">
+                    <i class="fas fa-shopping-cart"></i>
+                    Order Sekarang - Rp 99.000
+                </button>
+
+                <div class="guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Pembayaran aman & support responsif</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-tag">❓ FAQ</span>
+                <h2>Pertanyaan yang Sering Ditanyakan</h2>
+            </div>
+
+            <div class="faq-container fade-in">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Ini software atau ebook?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ini adalah software/tool yang bisa Anda gunakan untuk mencari produk Shopee dengan komisi tinggi. Bukan ebook, bukan course.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah bisa digunakan di HP?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Software ini berbasis web, jadi bisa diakses dari HP maupun laptop selama ada koneksi internet.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Lifetime itu maksudnya apa?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Kamu bayar sekali Rp 99.000 dan bisa menggunakan software ini selamanya. Tidak ada biaya bulanan atau tahunan.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah ada garansi uang kembali?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Karena ini produk digital yang langsung bisa diakses setelah pembayaran, tidak ada garansi uang kembali. Tapi saya jamin software berfungsi sesuai yang dijelaskan. Jika ada kendala teknis, silakan hubungi support.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Saya pemula, apakah cocok?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, software ini cocok untuk pemula. Penggunaannya sangat mudah - tinggal pilih kategori dan lihat hasilnya. Akan ada panduan penggunaan juga.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bagaimana cara ordernya?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Klik tombol "Order Sekarang", kamu akan diarahkan ke link khusus untuk konfirmasi pembayaran. Setelah pembayaran dikonfirmasi, akses software akan dikirimkan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content fade-in">
+            <h2>Siap Meningkatkan Penghasilan Affiliate-mu?</h2>
+            <p>Stop buang waktu scroll manual. Mulai cari produk komisi tinggi dengan cara yang lebih cerdas.</p>
+            <a href="#pricing" class="btn-primary">
+                <i class="fas fa-rocket"></i>
+                Dapatkan Akses Sekarang
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#pricing">Harga</a>
+                <a href="#faq">FAQ</a>
+                <a href="https://lynk.id/zentromedia/zywz0yz72w8d/checkout" target="_blank">Kontak</a>
+            </div>
+            <p class="footer-copyright">© 2026 Shopee Finder High Commission. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
